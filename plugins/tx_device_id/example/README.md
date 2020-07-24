@@ -1,6 +1,6 @@
-# plugin_test
+# tx_device_id_example
 
-A new Flutter project.
+Demonstrates how to use the tx_device_id plugin.
 
 ## Getting Started
 
