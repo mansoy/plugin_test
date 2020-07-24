@@ -9,25 +9,25 @@ public class SwiftTxDeviceIdPlugin: NSObject, FlutterPlugin {
     registrar.addMethodCallDelegate(instance, channel: channel)
   }
 
-  public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
-    result("iOS " + UIDevice.current.systemVersion)
-  }
+  // public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
+  //   result("iOS " + UIDevice.current.systemVersion)
+  // }
 
   public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
     switch call.method {
-    case "getIAFA":
-      var idfaString: String!
-      let manager = ASIdentifierManager.shared()
-      if manager.isAdvertisingTrackingEnabled {
-          idfaString = manager.advertisingIdentifier.uuidString
-      } else {
-          idfaString = ""
-      }
-      result(idfaString)
-    case "isLimitAdTrackingEnabled":
-      result(ASIdentifierManager.shared().isAdvertisingTrackingEnabled)
-    default:
-      result(nil)
+      case "getPlatformVersion":
+          result("iOS " + UIDevice.current.systemVersion)
+      case "getIDFA":
+          var idfaString: String!
+          let manager = ASIdentifierManager.shared()
+          if manager.isAdvertisingTrackingEnabled {
+              idfaString = manager.advertisingIdentifier.uuidString
+          } else {
+              idfaString = ""
+          }
+          result(idfaString)
+      default:
+          result(nil)
     }
   }
 }
